@@ -27,7 +27,7 @@ The frontend is built using React with Hooks, Context API, and React Query for e
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend:**
 - React.js
@@ -53,18 +53,18 @@ The frontend is built using React with Hooks, Context API, and React Query for e
 ---
 
 ##  Project Structure
--.
--├── api/                  # Node.js + Express backend
--│   ├── controllers/      # Logic for routes
--│   ├── routes/           # API endpoints
--│   └── connect.js        # MySQL connection logic
--└── client/               # React frontend
--    ├── src/
--    │   ├── components/   # Reusable UI elements
--    │   ├── context/      # Auth & Theme Context
--    │   └── pages/        # View components (Home, Profile, Login)
--    └── public/           # Static assets
-
+```text
+.
+├── api/                  # Node.js + Express backend
+│   ├── controllers/      # Logic for routes
+│   ├── routes/           # API endpoints
+│   └── connect.js        # MySQL connection logic
+└── client/               # React frontend
+    ├── src/
+    │   ├── components/   # Reusable UI elements
+    │   ├── context/      # Auth & Theme Context
+    │   └── pages/        # View components (Home, Profile, Login)
+    └── public/           # Static assets
 
 ---
 
