@@ -73,7 +73,7 @@ The frontend is built using React with Hooks, Context API, and React Query for e
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/shreyadiwakar/social-media-app.git
+git clone https://github.com/shreyadiwakar/Social-Media-App.git
 cd social-media-app
 ```
 ### 2. Backend Setup
