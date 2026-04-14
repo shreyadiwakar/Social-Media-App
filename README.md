@@ -20,10 +20,10 @@ The frontend is built using React with Hooks, Context API, and React Query for e
 -  Like / Unlike Posts
 -  Comment System
 -  Follow / Unfollow Users
--  Personalized Feed
 -  Dark Mode UI
 -  Fully Responsive Design
 -  Fast data fetching using React Query
+-  Change personal information
 
 ---
 
