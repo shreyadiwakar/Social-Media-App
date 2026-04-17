@@ -16,7 +16,6 @@ const Update = ({ setOpenUpdate, user }) => {
     website: user.website || "",
   });
 
-  // ✅ File upload logic
   const upload = async (file) => {
     try {
       const formData = new FormData();
@@ -37,7 +36,6 @@ const Update = ({ setOpenUpdate, user }) => {
 
   const queryClient = useQueryClient();
 
-  // ✅ FIXED mutation (v5 syntax)
   const mutation = useMutation({
     mutationFn: (updatedUser) => makeRequest.put("/users", updatedUser),
     onSuccess: () => {

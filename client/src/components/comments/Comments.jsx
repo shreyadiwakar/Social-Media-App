@@ -10,14 +10,12 @@ const Comments = ({ postId }) => {
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
 
-  // ✅ FIXED: unique query per post
   const { isLoading, error, data = [] } = useQuery({
     queryKey: ["comments", postId],
     queryFn: () =>
       makeRequest.get("/comments?postId=" + postId).then((res) => res.data),
   });
 
-  // ✅ FIXED: mutation v5
   const mutation = useMutation({
     mutationFn: (newComment) =>
       makeRequest.post("/comments", newComment),
@@ -37,7 +35,6 @@ const Comments = ({ postId }) => {
   return (
     <div className="comments">
       <div className="write">
-        {/* ✅ FIXED IMAGE URL */}
         <img
           src={
             currentUser.profilePic
@@ -64,7 +61,6 @@ const Comments = ({ postId }) => {
         : data.map((comment) => (
             <div className="comment" key={comment.id}>
               
-              {/* ✅ FIXED IMAGE URL */}
               <img
                 src={
                   comment.profilePic

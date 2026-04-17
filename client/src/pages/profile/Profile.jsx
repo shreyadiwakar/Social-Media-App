@@ -23,14 +23,12 @@ const Profile = () => {
   const userId = parseInt(useLocation().pathname.split("/")[2]);
   const queryClient = useQueryClient();
 
-  // ✅ FIXED user query
   const { isLoading, error, data } = useQuery({
     queryKey: ["user", userId],
     queryFn: () =>
       makeRequest.get("/users/find/" + userId).then((res) => res.data),
   });
 
-  // ✅ FIXED relationship query
   const { isLoading: rIsLoading, data: relationshipData = [] } = useQuery({
     queryKey: ["relationship", userId],
     queryFn: () =>
@@ -39,7 +37,6 @@ const Profile = () => {
         .then((res) => res.data),
   });
 
-  // ✅ FIXED mutation
   const mutation = useMutation({
     mutationFn: (following) => {
       if (following)
@@ -64,7 +61,7 @@ const Profile = () => {
         <>
           <div className="images">
 
-            {/* FIXED COVER IMAGE */}
+            
             <img
               src={
                 data.coverPic
@@ -73,7 +70,6 @@ const Profile = () => {
               className="cover"
             />
 
-            {/* FIXED PROFILE IMAGE */}
             <img
               src={
                 data.profilePic

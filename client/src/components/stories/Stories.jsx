@@ -10,14 +10,12 @@ const Stories = () => {
 
   const [uploading, setUploading] = useState(false);
 
-  // ✅ FETCH STORIES
   const { isLoading, error, data: stories = [] } = useQuery({
     queryKey: ["stories"],
     queryFn: () =>
       makeRequest.get("/stories").then((res) => res.data),
   });
 
-  // ✅ ADD STORY
   const addMutation = useMutation({
     mutationFn: (newStory) =>
       makeRequest.post("/stories", newStory),
@@ -26,7 +24,6 @@ const Stories = () => {
     },
   });
 
-  // ✅ AUTO UPLOAD
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -51,7 +48,6 @@ const Stories = () => {
     }
   };
 
-  // ✅ IMAGE HELPER
   const getImgPath = (img) => {
     if (!img) return "";
     return img.startsWith("http") ? img : "/upload/" + img;
@@ -60,7 +56,6 @@ const Stories = () => {
   return (
     <div className="stories">
 
-      {/* ➕ ADD STORY */}
       <div className="story" style={{ minWidth: "150px", flexShrink: 0 }}>
         <img src={getImgPath(currentUser.profilePic)} alt="" />
         <span>{currentUser.name}</span>
@@ -79,7 +74,6 @@ const Stories = () => {
         {uploading && <span>Uploading...</span>}
       </div>
 
-      {/* 📦 STORIES */}
       {error ? (
         "Something went wrong"
       ) : isLoading ? (

@@ -15,7 +15,7 @@ export const getPosts = (req, res) => {
     let q;
     let values;
 
-    // ✅ If userId exists → PROFILE POSTS
+    // If userId exists then PROFILE POSTS
     if (userId) {
       q = `
         SELECT p.*, u.id AS userId, u.name, u.profilePic
@@ -26,7 +26,7 @@ export const getPosts = (req, res) => {
       `;
       values = [userId];
     } 
-    // ✅ Else → HOME FEED (followers + self)
+    // Else HOME FEED (followers + self)
     else {
       q = `
         SELECT p.*, u.id AS userId, u.name, u.profilePic
@@ -42,7 +42,7 @@ export const getPosts = (req, res) => {
 
     db.query(q, values, (err, data) => {
       if (err) {
-        console.log("SQL ERROR:", err); // 🔥 debug
+        console.log("SQL ERROR:", err); // debug
         return res.status(500).json(err);
       }
       return res.status(200).json(data);
@@ -50,7 +50,7 @@ export const getPosts = (req, res) => {
   });
 };
 
-// 🔥 ADD POST
+// ADD POST
 export const addPost = (req, res) => {
   const token = req.cookies.accessToken;
 
@@ -79,7 +79,7 @@ export const addPost = (req, res) => {
   });
 };
 
-// 🔥 DELETE POST
+// DELETE POST
 export const deletePost = (req, res) => {
   const token = req.cookies.accessToken;
 

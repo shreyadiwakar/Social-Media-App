@@ -19,14 +19,12 @@ const Post = ({ post }) => {
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
 
-  // ✅ FIXED useQuery (v5)
   const { isLoading, error, data = [] } = useQuery({
     queryKey: ["likes", post.id],
     queryFn: () =>
       makeRequest.get("/likes?postId=" + post.id).then((res) => res.data),
   });
 
-  // ✅ FIXED mutation (v5)
   const mutation = useMutation({
     mutationFn: (liked) => {
       if (liked) return makeRequest.delete("/likes?postId=" + post.id);
@@ -37,7 +35,6 @@ const Post = ({ post }) => {
     },
   });
 
-  // ✅ DELETE mutation
   const deleteMutation = useMutation({
     mutationFn: (postId) => makeRequest.delete("/posts/" + postId),
     onSuccess: () => {
@@ -59,7 +56,6 @@ const Post = ({ post }) => {
         <div className="user">
           <div className="userInfo">
 
-            {/* ✅ FIXED PROFILE PIC (no break) */}
             <img
               src={
                 post.profilePic
@@ -93,7 +89,6 @@ const Post = ({ post }) => {
         <div className="content">
           <p>{post.desc}</p>
 
-          {/* ✅ FIXED IMAGE (no broken img) */}
           {post.img && <img src={"/upload/" + post.img} alt="" />}
         </div>
 

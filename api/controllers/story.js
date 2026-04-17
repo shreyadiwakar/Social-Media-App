@@ -8,7 +8,6 @@ export const getStories = (req, res) => {
   jwt.verify(token, "secretkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    // Query adjusted: No createdAt, fixed JOINs and WHERE logic
     const q = `SELECT s.*, u.name FROM stories AS s 
                JOIN users AS u ON (u.id = s.userId)
                LEFT JOIN relationships AS r ON (s.userId = r.followedUserId AND r.followerUserId = ?) 
